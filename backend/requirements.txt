@@ -1,0 +1,25 @@
+# 光伏面板缺陷检测系统 · 后端最小运行依赖（Python 3.12+）
+# 安装：cd backend && python -m pip install -r requirements.txt
+#
+# 分层依赖：
+#   requirements.txt      最小运行集（ONNX 推理路径）
+#   requirements-pt.txt   PT 回退引擎（仅部署 .pt 权重时需要，会额外拉取 PyTorch）
+#   requirements-dev.txt  测试（pytest / httpx）
+#
+# 版本上界用于避免主版本升级破坏兼容性；升级前请跑 tests_light/ 回归。
+
+fastapi>=0.110,<1
+uvicorn[standard]>=0.29,<1
+python-multipart>=0.0.9,<1
+PyJWT>=2.8,<3
+pydantic>=2.6,<3
+email-validator>=2.1,<3
+onnxruntime>=1.18,<2
+opencv-python>=4.9,<5
+pillow>=10.2,<12
+numpy>=1.26,<3
+# ---- LLM Agent（阿里云百炼 OpenAI 兼容模式 + 知识库检索）----
+openai>=1.40,<3             # LLM SDK（OpenAI 协议，指向百炼 compatible-mode/v1）
+jieba>=0.42,<1              # 中文分词（知识库 BM25 检索）
+rank-bm25>=0.2.2,<1         # BM25 检索（纯 Python，依赖 numpy）
+python-dotenv>=1.0,<2       # 加载 backend/.env 配置文件（开发与部署统一入口）

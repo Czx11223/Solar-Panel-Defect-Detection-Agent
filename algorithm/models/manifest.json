@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-10 09:30:32",
+  "baseline": {
+    "weights": "app\\ml\\weights\\best.pt",
+    "map50": 0.637742,
+    "size_mb": 5.97
+  },
+  "hardware": "CPU: Intel64 Family 6 Model 154 Stepping 3, GenuineIntel；GPU: 无（CPU）；基准运行时: onnxruntime CPU / torch CPU",
+  "targets": {
+    "latency_ms": 200.0,
+    "map50_drop": 0.02
+  },
+  "artifacts": [
+    {
+      "name": "best.onnx",
+      "path": "D:\\peixunwenjian\\2026.9.14-9.28\\algorithm\\models\\best.onnx",
+      "precision": "FP32",
+      "size_mb": 11.7,
+      "map50": 0.614989,
+      "map50_ok": false
+    }
+  ]
+}

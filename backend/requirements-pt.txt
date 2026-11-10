@@ -1,0 +1,6 @@
+# PT 回退引擎（可选）：仅当 backend/app/ml/weights/ 下只有 *.pt、没有 *.onnx 时需要。
+# 会额外拉取 PyTorch（数百 MB）；走 ONNX 路径时请勿安装。
+#   cd backend && python -m pip install -r requirements-pt.txt
+-r requirements.txt
+
+ultralytics>=8.2,<9

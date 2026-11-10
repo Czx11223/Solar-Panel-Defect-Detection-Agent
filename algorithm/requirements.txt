@@ -1,0 +1,16 @@
+# 光伏面板缺陷检测系统 · 算法环境依赖（阶段1数据集构建 + 阶段2训练评估导出）
+# 运行环境：Python 3.12+
+#
+# 【PyTorch安装指引】直接执行 pip install -r requirements.txt 会安装CPU版torch；
+# GPU训练请先按硬件安装对应wheel，再安装本清单其余依赖：
+#   GPU（CUDA 12.1）: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#   纯CPU:            pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+ultralytics>=8.2.0          # YOLOv8训练/评估/导出（自动携带torch、opencv、pyyaml、pandas等）
+opencv-python>=4.9.0        # 图像处理（阶段1脚本 + export.py基准预处理）
+pillow>=10.2.0              # 图像读写
+numpy>=1.26.0               # 数值计算（指标统计/PR曲线/后处理）
+matplotlib>=3.8.0           # PR曲线绘制（eval.py直接使用，ultralytics亦依赖）
+onnx>=1.16.0                # ONNX模型格式（export.py导出）
+onnxruntime>=1.18.0         # ONNX推理：INT8量化/精度核对/延迟基准
+# ---- 可选依赖（默认功能不需要安装）----
+# torch-pruning>=1.6.0      # 结构化剪枝：仅 export.py --prune 时需要（1.6.0冒烟验证通过）

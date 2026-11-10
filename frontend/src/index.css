@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- 全局背景与排版基底（视觉美化） ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 登录/注册等清爽页面的氛围渐变背景 */
+.pv-auth-bg {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(1000px 500px at 15% -10%, rgba(2, 132, 199, 0.18), transparent 60%),
+    radial-gradient(900px 480px at 85% 110%, rgba(14, 165, 233, 0.16), transparent 60%),
+    linear-gradient(160deg, #f0f9ff 0%, #f8fafc 45%, #ecfeff 100%);
+}
+
+.pv-auth-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(2, 132, 199, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 132, 199, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 40%, transparent 75%);
+  pointer-events: none;
+}
+
+.pv-auth-card {
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+  border: 1px solid rgba(2, 132, 199, 0.12);
+  box-shadow:
+    0 20px 50px -18px rgba(2, 132, 199, 0.35),
+    0 2px 8px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+/* ---- 顶部导航品牌徽标动效 ---- */
+.pv-brand-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+}
+
+/* ---- 卡片温和悬浮与阴影 ---- */
+.pv-shadow-card {
+  box-shadow:
+    0 8px 28px -12px rgba(15, 23, 42, 0.12),
+    0 1px 3px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ---- 上传拖拽区视觉强化 ---- */
+.pv-upload-dragger .ant-upload-drag {
+  border-radius: 14px;
+  border: 1.5px dashed rgba(2, 132, 199, 0.35) !important;
+  background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%) !important;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.pv-upload-dragger .ant-upload-drag:hover {
+  border-color: #0284c7 !important;
+  background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 100%) !important;
+}
+.pv-upload-dragger .ant-upload-drag-icon {
+  font-size: 40px;
+  color: #0284c7;
+}
+
+/* ---- 检测结构图/对比图圆角居中 ---- */
+.pv-img-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+/* ---- 细滚动条（历史表格横向滚动体验） ---- */
+.pv-scroll::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.pv-scroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: rgba(2, 132, 199, 0.25);
+}
+.pv-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---- 柔和入场动画 ---- */
+@keyframes pv-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.pv-fade-up {
+  animation: pv-fade-up 0.35s ease both;
+}

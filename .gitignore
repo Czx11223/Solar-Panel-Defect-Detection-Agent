@@ -1,0 +1,45 @@
+# ==================== Python ====================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# ==================== 运行时数据 ====================
+backend/data/
+*.db
+*.db-wal
+*.db-shm
+
+# ==================== 密钥与环境（严禁入库）====================
+.env
+*.env
+!*.env.example
+
+backend/storage/uploads/*
+backend/storage/results/*
+!backend/storage/uploads/.gitkeep
+!backend/storage/results/.gitkeep
+
+# ==================== 模型权重与数据集（大文件，走外部存储/发布包）====================
+# 权重、训练产物与数据集不进版本库；部署时按 docs/deploy_manual.md 手工放置。
+*.pt
+*.onnx
+*.pth
+algorithm/datasets_final/
+algorithm/datasets_fixed/
+algorithm/datasets_refine_50/
+algorithm/runs/
+runs/
+
+# ==================== 前端 ====================
+node_modules/
+dist/
+frontend/dist/
+backend/webapp_dist/
+*.tsbuildinfo
+*.local
+
+# ==================== 临时文件 ====================
+# （PPT 生成相关产物已于 2026-11-10 清理，对应忽略规则一并移除）
